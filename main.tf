@@ -31,9 +31,11 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
+  security_groups = ["ssh-http-https"]
+  key_name = "yankin-key"
 
   tags = {
-    Name = "YankinLab5"
+    Name = "YankinLab5v2"
   }
 }
 
